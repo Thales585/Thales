@@ -9,13 +9,14 @@ import json, csv, os, sys, glob
 import numpy as np
 
 def load(run_dir):
-    closes, months = {}, None
+    # align all symbols on the intersection of available months (IEX can miss a bar)
+    raw = {}
     for f in sorted(glob.glob(f"{run_dir}/data/*.json")):
         s = os.path.basename(f)[:-5]
-        bars = json.load(open(f))["bars"][1:]
-        closes[s] = np.array([b["c"] for b in bars])
-        months = [b["t"][:7] for b in bars]
-    return closes, months
+        raw[s] = {b["t"][:7]: b["c"] for b in json.load(open(f))["bars"]}
+    common = sorted(set.intersection(*[set(v) for v in raw.values()]))[1:]  # drop partial first month
+    closes = {s: np.array([raw[s][m] for m in common]) for s in raw}
+    return closes, common
 
 def main():
     run_dir, mode = sys.argv[1], sys.argv[2]
