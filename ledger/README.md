@@ -27,6 +27,11 @@ never mid-run).
 | [Electrons trio](entries/2026-07-04-electrons-trio.md) | 2 | $5,000 | orders queued |
 | [Metals trio](entries/2026-07-04-metals-trio.md) | 3 | $5,000 | orders queued |
 | [Procurement trio](entries/2026-07-04-procurement-trio.md) | 4 | $5,000 | orders queued |
+| [Agriculture trio](entries/2026-07-04-agriculture-trio.md) | unranked (first checkpoint 2026-08-15) | $5,000 | orders queued |
 | [AAPL road test](entries/2026-07-04-aapl-road-test.md) | — (plumbing) | ~$210 | order queued |
 
-Deployed: ~$20,210 of $100,000 (~20%). Cicada sleeve: empty (cap <5%).
+Deployed: ~$25,210 of $100,000 (~25%). Cicada sleeve: empty (cap <5%).
+
+Gauntlet runs live in `gauntlets/` — pre-registration, kill tables, anchor data, and
+backtests for every sector put through the machinery, including the ones that produced
+no position.
