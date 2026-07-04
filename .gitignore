@@ -1,0 +1,18 @@
+# Secrets — NEVER commit. Credentials live in ~/.config/alpaca/, outside this repo.
+*.env
+.env
+.env.*
+*secret*
+*credentials*
+paper-trading.env
+alpaca*.env
+
+# OS / editor junk
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Scratch
+scratch/
+*.log
