@@ -35,6 +35,8 @@ scripts/alpaca.sh orders [open|closed|all]       # order list (default: open)
 scripts/alpaca.sh order <order_id>               # one order's status / fill
 scripts/alpaca.sh buy  <SYMBOL> <QTY> [limit]    # market (no price) or limit+GTC
 scripts/alpaca.sh sell <SYMBOL> <QTY> [limit]    # market (no price) or limit+GTC
+scripts/alpaca.sh buy-notional  <SYMBOL> <USD>   # dollar-based fractional order
+scripts/alpaca.sh sell-notional <SYMBOL> <USD>   # (market, day; asset must be fractionable)
 scripts/alpaca.sh cancel <order_id>              # cancel an open order
 ```
 

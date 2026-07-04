@@ -13,6 +13,8 @@
 #   alpaca.sh order <order_id>
 #   alpaca.sh buy  <SYMBOL> <QTY> [limit_price]
 #   alpaca.sh sell <SYMBOL> <QTY> [limit_price]
+#   alpaca.sh buy-notional  <SYMBOL> <DOLLARS>   # fractional, market, day
+#   alpaca.sh sell-notional <SYMBOL> <DOLLARS>
 #   alpaca.sh cancel <order_id>
 #
 # Market orders when no limit price is given; limit + GTC when one is.
@@ -67,6 +69,14 @@ order() {
   api POST /orders "$body"
 }
 
+order_notional() {
+  local side="$1" symbol="$2" dollars="$3"
+  local body
+  body=$(printf '{"symbol":"%s","notional":"%s","side":"%s","type":"market","time_in_force":"day"}' \
+    "$symbol" "$dollars" "$side")
+  api POST /orders "$body"
+}
+
 cmd="${1:-account}"; shift || true
 case "$cmd" in
   account)   api GET /account ;;
@@ -76,6 +86,8 @@ case "$cmd" in
   order)     api GET "/orders/${1:?order id required}" ;;
   buy)       order buy  "${1:?symbol}" "${2:?qty}" "${3:-}" ;;
   sell)      order sell "${1:?symbol}" "${2:?qty}" "${3:-}" ;;
+  buy-notional)  order_notional buy  "${1:?symbol}" "${2:?dollars}" ;;
+  sell-notional) order_notional sell "${1:?symbol}" "${2:?dollars}" ;;
   cancel)    api DELETE "/orders/${1:?order id required}" ;;
   *) echo "unknown command: $cmd" >&2; exit 2 ;;
 esac

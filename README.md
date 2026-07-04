@@ -59,12 +59,20 @@ act.
 ```
 thales/
 ├── README.md
+├── docs/                           # Method card + playbook PDFs
+├── ledger/                         # The calibration ledger (the product)
+│   ├── README.md                   # Current book + rules
+│   └── entries/                    # One pre-registered entry per position
 └── .claude/
     └── skills/
         └── alpaca-paper-trade/    # Claude Code skill: paper-trade execution layer
             ├── SKILL.md
             └── scripts/alpaca.sh   # curl-based Alpaca paper-API helper
 ```
+
+**Status: development stage.** Research is ongoing, but the book is now being road-tested
+live on the Alpaca paper account — see [the ledger](ledger/README.md) for the current
+positions ($5,000 per complete trio, no leverage).
 
 ## The execution layer
 
@@ -96,7 +104,8 @@ scripts/alpaca.sh order <id>      # check fill status
 
 ## Reference
 
-The method is distilled in `Thales_Method_Card.pdf` and `Thales_Playbook.pdf`.
+The method is distilled in [docs/Thales_Method_Card.pdf](docs/Thales_Method_Card.pdf) and
+[docs/Thales_Playbook.pdf](docs/Thales_Playbook.pdf).
 
 ---
 
