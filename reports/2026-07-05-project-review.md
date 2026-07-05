@@ -12,7 +12,7 @@ the moment of truth, before the market has said anything back.*
 
 In two sessions we went from a set of API keys to a live paper-trading operation: a
 public GitHub repository, two custom tools, **eight three-legged positions** worth
-~$40,200 of a $100,000 paper account, a written hypothesis for each, an event-based exit
+~$40,210 of a $100,000 paper account, a written hypothesis for each, an event-based exit
 doctrine, a daily monitoring loop, and an audited skill that turns a raw hypothesis into
 a tradable structure.
 
@@ -24,8 +24,12 @@ strategy, the resemblance is partial and is stated as such in §4.
 
 The report also does something the method demands of itself: it audits its own
 **integrity**. Our core loop is *hypothesis → test the market → take a viable position*.
-We drifted from it in two ways — one useful, one dangerous — and §6 names both without
-flinching, because a calibration ledger that flatters itself is worthless.
+We drifted from it — one useful way, and three dangerous ones — and §6 names them all
+without flinching, because a calibration ledger that flatters itself is worthless. One of
+those three was caught only when an independent model reviewed this very report and found
+a defense in it that the repository disproves; that correction is left visible in §6.3
+rather than quietly edited out, because how the dangerous drift *hides* is itself a
+finding.
 
 ---
 
@@ -100,9 +104,11 @@ are conceptual rather than mechanical.** The table rates the resemblance honestl
 
 | Known strategy | What it shares | Where it differs | Similarity |
 |---|---|---|---|
-| **All-Weather / risk parity**[^1] | The regime-inverse leg — holding assets that win in *different* macro regimes so the book isn't a single bet | Thales balances regimes *within one theme per trio*, not across the whole portfolio; uses **no leverage** and no volatility-weighting, which are the defining machinery of risk parity | **Moderate (concept only)** |
+| **Permanent Portfolio**[^17] (Harry Browne) | The closest *structural* cousin: fixed weights, **no leverage**, no volatility-targeting, assets chosen so each *feeds* in a different macro regime, held passively | Browne balances regimes across the *whole portfolio* with four fixed sleeves; Thales does it *per theme per trio*, and adds a falsification test Browne has no equivalent of | **Moderate–high (on structure)** |
+| **All-Weather / risk parity**[^1] | The regime-inverse leg — holding assets that win in *different* macro regimes so the book isn't a single bet | Thales uses **no leverage** and no volatility-weighting[^18], the defining machinery of risk parity; and balances within one theme, not across the book | **Moderate (concept only)** |
 | **Thematic / sector basket** | Each trio is a concentrated bet on one sector's mechanism | A plain thematic basket has no internal hedge and no falsification test; Thales bolts both on | **Moderate** |
-| **Long/short equity** | The `short(N)` proxy rung, and the "inverse" language | Thales is overwhelmingly **long**; shorts appear only as a last-resort synthetic seat, never a paired book; there is no market-neutral target | **Low** |
+| **"Picks and shovels" / value-chain investing**[^19] | The **tollbooth seat literally is this**: own the toll that collects whichever competitor wins, not the prospector | It's one seat of three, not the whole strategy; Thales pairs it with an engine and a hedge | **Moderate (on one seat)** |
+| **Long/short equity** | The `short(N)` proxy rung, and the "inverse" language | Thales is a ~75/25 net-long *cross-hedge* within a theme, not a paired long/short book; shorts appear only as a last-resort synthetic seat; there is no market-neutral[^20] target | **Low** |
 | **Barbell / tail-hedging**[^10] | The core-plus-cicada shape: a stable core plus tiny asymmetric bets | Thales's core is itself risk-bearing equity, not the "safe" end of a true barbell | **Low–moderate** |
 | **Event-driven / catalyst investing** | Kill-lines and checkpoints are dated to real catalysts (earnings, legislation) | Event-driven funds trade the event; Thales uses events as *falsification dates*, not as the trade | **Low–moderate** |
 | **Superforecasting / forecasting tournaments**[^3] | The actual objective — calibration, pre-registration, honest grading, "grade the mechanism not the luck" | This is an *epistemology*, not a financial strategy; it says nothing about position construction | **High (on objective), N/A (on mechanics)** |
@@ -122,7 +128,18 @@ on one feature and ignoring the other two.
 
 These are built the same way as the gauntlet analyses — Alpaca monthly closes[^11],
 dividend-adjusted, each trio treated as a fixed-weight book indexed to a starting value.
-They show the eight enacted trios **as of Friday's close, before Monday's fills**.
+They show the eight enacted trios at their **last pre-trade mark** — the July monthly bar
+through 2026-07-03, which (with Friday the observed Independence Day holiday) is
+effectively **Thursday's close**, before Monday's fills.
+
+Two honesty notes before the numbers. First, **"YTD" here means "since the end-January
+monthly bar,"** because our monthly series indexes off the January *close* — it therefore
+omits January's own move, and is not the calendar-strict year-to-date a data terminal
+would show. Second, **the chart's own design invites the comparison the next section then
+disavows**: solid-vs-dashed lines and circle-vs-square markers visually sort
+gauntlet-born from playbook trios, tempting the eye to rank them — which §6.2(b) explains
+is exactly the artifact to distrust. The encoding is kept only to make the two *origins*
+legible, not to endorse the comparison.
 
 ### Chart 1 — Year-to-date, indexed to January 2026
 
@@ -149,8 +166,11 @@ They show the eight enacted trios **as of Friday's close, before Monday's fills*
 four) look tidier — every one positive YTD, drawdowns clustered around −10%, while three
 of the four playbook trios are *negative* YTD with deeper drawdowns. It is tempting to
 conclude the gauntlet builds better trios. **That conclusion is largely circular, and
-§6 explains why.** These charts are the pre-trade baseline against which the *forward*
-record — the only record that counts — will be graded from Monday onward.
+§6 explains why.** (The Uranium row shows why single numbers mislead in both directions:
+−20.3% "YTD" but +27.7% over the trailing twelve months — not a typo, just two different
+windows, the sector having run hard through late 2025 and given some back since.) These
+charts are the pre-trade baseline against which the *forward* record — the only record
+that counts — will be graded from Monday onward.
 
 ---
 
@@ -193,40 +213,73 @@ comparing a hand-picked sample to an unfiltered one on the very metric used to p
 This is selection bias wearing the costume of a result. The tidy bottom four of the
 table are an artifact of the selection rule, not yet evidence of skill.
 
-### 6.3 Why this matters, and what protects us
+**(c) The gauntlet doesn't just filter the window — it *searches* it (a third drift,
+caught in review).** This report's first draft missed this; an independent review[^14]
+found it. Two compounding problems:
 
-Neither drift is fatal *if it is labelled*, and both are:
+- **The garden of forking paths.**[^15] When a seat wouldn't fill, we *widened the pool
+  and re-ran* — Housing's tollbooth was searched three times (BLDR → FNF, HD → ICE →
+  ESNT) until one candidate survived the measurement window. Seat *contention* was also
+  decided on trailing return and drawdown (ESNT beat MTG "on TR and DD"; ADM beat BG on
+  drawdown; INVH beat AMH on TR). Drawing candidates until one passes the same window
+  you then measure is multiple-comparisons selection — a stronger version of (b), not a
+  separate mild one.
+- **HARKing *inside* the gauntlet.** Housing's hypothesis (H6) is flagged in our own
+  register as "the run's **discovered** hypothesis — the gauntlet found it by killing the
+  flow-toll pool." A hypothesis formed from the data mid-run and enacted the same session
+  is the same failure as §6.2(a), sitting in the half of the book we called clean.
 
-- The reverse-engineered hypotheses are **explicitly marked** as reverse-engineered in
-  the register; they are not passed off as forward predictions.
-- The gauntlet pre-registration files are committed to version control **before** the
-  data is pulled — a timestamped, tamper-evident record that the forward hypotheses
-  really were forward. Git is doing the work a lab notebook does in science.
+### 6.3 What actually protects us — and one defense that doesn't
+
+An earlier draft of this section claimed the gauntlet pre-registration files were
+"committed to version control **before** the data is pulled — a timestamped,
+tamper-evident record." **That claim was false, and the repository disproves it.** For
+all six gauntlets, `00-preregistration.md` and `01-run.md` landed in the *same git
+commit* (Agriculture in `1b19bba`, Housing in `20b2a12`, and so on). Git therefore
+provides **zero** tamper-evident separation between our hypotheses and our results. The
+pre-registration was real as a *workflow* — the prose was written before the data was
+pulled — but it is **unverifiable in the record**, and a single author controls his own
+commit timestamps anyway. Leaving the original claim in would have been precisely the
+self-flattery this ledger exists to refuse; catching it only in review is itself a small
+data point about how easily the dangerous drift hides.
+
+So the honest list of what protects us is shorter than the draft pretended:
+
+- The reverse-engineered hypotheses are marked as such — though bluntly: the register's
+  *title* marks the **whole** thing "reverse-engineered from the book," with no
+  per-hypothesis distinction, and the promised "discount for post-hoc origin" is so far a
+  *promise, not a mechanism* — no discount rule is written down yet. That is a gap, not a
+  safeguard.
 - The one honest verdict on §5's charts is written into §5 itself: *read with suspicion.*
 
-And the real protection arrives Monday. Every position's grade date is **2026-08-15 and
-beyond** — genuinely out-of-sample, after fills, on data that did not exist when the
-hypotheses were written. **The forward record cannot be reverse-engineered.** That is the
-only evidence that will count, and it is the reason the distinction in this section is
-worth being this strict about: the backward-looking story is contaminated by
-construction; the forward-looking one is clean by construction. We grade on the latter.
+The **real** protection arrives Monday, and it has to carry the whole weight alone. Every
+position's grade date is **2026-08-15 and beyond** — genuinely out-of-sample[^16]: after
+fills, on data that did not exist when the hypotheses were written. **The forward record
+cannot be reverse-engineered, cannot be searched, and cannot be back-dated.** The
+backward story is contaminated three ways over; the forward one is clean by construction.
+We grade on the forward one, and on nothing else.
 
-**The standing rule going forward, to keep the useful drift and kill the dangerous one:**
-no position enters the book without a pre-registered, committed hypothesis *first* — the
-`hypothesis-to-trio` skill exists to enforce exactly that ordering. Playbook trios H1–H4
-will be graded with an explicit discount for their post-hoc origin. Integrity here is not
-politeness; it is the difference between measuring our judgement and flattering it.
+**Three standing rules adopted from this review, effective now**, to keep the useful
+drift and kill the dangerous ones: (1) no position enters the book without a
+pre-registered, committed hypothesis *first* — the `hypothesis-to-trio` skill exists to
+enforce that ordering; (2) commit **and push** `00-preregistration.md` in its *own* commit
+before any data is pulled, so the next run's pre-registration is tamper-evident by
+construction rather than by assertion; (3) write an explicit grading discount for the
+post-hoc playbook hypotheses (H1–H4) before their first checkpoint, turning the promise
+into a mechanism. Integrity here is not politeness; it is the difference between measuring
+our judgement and flattering it.
 
 ---
 
 ## 7. Current book and open threads
 
-- **Deployed:** ~$40,200 of $100,000 (~40%), no leverage. Eight trios + one plumbing
+- **Deployed:** ~$40,210 of $100,000 (~40%), no leverage. Eight trios + one plumbing
   share, all `accepted`, filling at Monday's open.
 - **All first checkpoints:** 2026-08-15. Nearest early trigger: Fastenal's mid-July
   monthly sales print.
-- **Findings on the shelf:** Space and AI-datacenter power (no valid trio; conditions to
-  reopen each are logged).
+- **Findings on the shelf:** four sectors gauntleted to "no valid trio" — Space and
+  AI-datacenter power (from our own runs, reopen conditions logged), plus Water (inverse
+  seat unfillable) and Shipping (killed on timing) inherited from the playbook.
 - **Open threads:** (1) the daily monitoring loop currently lives in a session-scoped
   scheduler that expires in ~7 days — it needs promotion to a persistent routine; (2)
   Monday's fills must be written into the ledger with real entry prices to arm the price
@@ -281,8 +334,12 @@ Claude model (Fable) to reduce single-author blind spots.
 
 [^8]: **Five kill criteria (K1–K5)** — viability (real size, not a bankruptcy candidate),
 authenticity (the asset genuinely *is* the thesis seat), survival (positive trailing year,
-drawdown better than ~−60%), self-funding (no forced dilutive capital raise), and
-non-redundancy (not too correlated with another seat). See the glossary for each.
+plus a max-drawdown floor), self-funding (no forced dilutive capital raise), and
+non-redundancy (not too correlated with another seat). Note a real inconsistency in our
+own corpus: the *gauntlet* runs apply the survival floor at ~−60% drawdown, while the
+*playbook* entries state it as "round-tripped ~−75%." Both appear in the repository; they
+should be reconciled to one number in the next between-runs amendment. See the glossary
+for each criterion.
 
 [^9]: **Cicada sleeve** — a small (<5% of book), hard-capped allocation to rare events
 whose date is fixed in advance (like a periodical cicada emergence), which the market has
@@ -303,6 +360,33 @@ lows a daily series would show.
 [^13]: **HARKing** — "Hypothesising After the Results are Known." Presenting a hypothesis
 invented to fit already-seen data as if it had been predicted in advance. A recognised
 research-integrity failure; the central risk §6 guards against.
+
+[^14]: **Independent review** — this report was reviewed by a separate Claude model
+(Fable) before publication; §6.2(c) and the correction in §6.3 are its findings, adopted.
+
+[^15]: **Garden of forking paths** — a research-integrity term (Andrew Gelman) for the
+bias introduced when the analysis path is chosen *after* seeing the data — including
+trying alternative candidates until one "works." Distinct from outright cherry-picking
+because each individual choice can feel principled.
+
+[^16]: **Out-of-sample** — evaluated on data that was *not* used to build or select the
+model. The opposite of testing on the same data you fitted to; the only honest test of a
+prediction. Monday's fills onward are out-of-sample by construction.
+
+[^17]: **Permanent Portfolio** — Harry Browne's fixed four-way split (stocks / long
+bonds / gold / cash), unleveraged and rebalanced to fixed weights, each sleeve designed
+to carry a different macro regime. Structurally the closest passive cousin to a trio.
+
+[^18]: **Volatility-weighting** — sizing positions so each contributes equal *risk*
+(volatile assets get smaller weights). Core to risk parity; absent in Thales, which uses
+fixed 42.5/32.5/25 weights regardless of volatility.
+
+[^19]: **"Picks and shovels" / value-chain investing** — buying the suppliers/enablers of
+a boom rather than its direct players (sell shovels to prospectors). The tollbooth seat
+is this idea in one leg.
+
+[^20]: **Market-neutral** — a book balanced so overall market moves wash out, leaving
+only the relative bet. Thales does *not* target this; it stays net-long.
 
 ---
 
@@ -330,8 +414,14 @@ research-integrity failure; the central risk §6 guards against.
   must survive.
 - **Kill-line** — a pre-declared, specific event that, if observed, closes a position;
   the exit-doctrine equivalent of a stop-loss, but triggered by *evidence*, not price.
+- **Market-neutral** — see footnote 20. A book with market moves balanced out; *not* a
+  Thales target.
 - **Notional** — the dollar size of a position (here, e.g., $2,125 for an engine leg),
   independent of share count.
+- **Out-of-sample** — see footnote 16. Data not used to build or pick the model; the only
+  honest test of a forecast.
+- **P&L** — "profit and loss," the running gain or loss on a position. "Green P&L" simply
+  means it's up.
 - **Paper trading** — simulated trading with fake money against real prices; no capital
   at risk.
 - **Playbook trio** — one of the four trios inherited pre-specified from the Thales
