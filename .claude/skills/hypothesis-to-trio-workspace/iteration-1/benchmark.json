@@ -1,0 +1,39 @@
+{
+ "skill_name": "hypothesis-to-trio",
+ "iteration": 1,
+ "configs": {
+  "with_skill": {
+   "pass_rate": 1.0,
+   "passed": 11,
+   "total": 11,
+   "mean_tokens": 33883,
+   "mean_duration_s": 158.8
+  },
+  "without_skill": {
+   "pass_rate": 0.4545,
+   "passed": 5,
+   "total": 11,
+   "mean_tokens": 35178,
+   "mean_duration_s": 255.9
+  }
+ },
+ "delta": {
+  "pass_rate": 0.5455,
+  "assertions": 6
+ },
+ "per_eval": {
+  "eval-0-water": {
+   "with_skill": "6/6",
+   "without_skill": "4/6"
+  },
+  "eval-1-ai-bust": {
+   "with_skill": "5/5",
+   "without_skill": "1/5"
+  }
+ },
+ "notes": [
+  "Eval-0 baseline contaminated: subagent read the house method from the repo and reproduced it unprompted, inflating baseline to 4/6.",
+  "Eval-1 baseline (1/5) is the clean signal: with no in-repo anchor the baseline defaulted to a generic options trade plan.",
+  "Two assertions (gauntlet hand-off, uninsured quadrant) failed for BOTH baselines - strong discriminators."
+ ]
+}

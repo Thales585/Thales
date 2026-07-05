@@ -1,0 +1,13 @@
+{
+ "eval_id": 0,
+ "eval_name": "water-unfillable-inverse",
+ "prompt": "Hypothesis: municipal water infrastructure in the US is critically underinvested and will be repriced upward over the next 24 months as federal funding lands. Turn this into something I can structure as positions in my Thales paper ledger.",
+ "assertions": [
+  "Output labels all three seats explicitly: Engine, Tollbooth, Regime-inverse",
+  "The water regime-inverse seat is handled via the proxy ladder (ETF/carrier proxy, short(N) notation, or explicit unfillable declaration) rather than a forced occupant with no caveat",
+  "Tickers are claimed verified tradable on Alpaca (verification step evidenced in output)",
+  "No prices, returns, drawdowns, or market caps quoted from memory (qualitative facts OK)",
+  "Ends with gauntlet hand-off and does NOT declare the trio valid/surviving/passing",
+  "Names an uninsured quadrant (one scenario hurting all three seats)"
+ ]
+}

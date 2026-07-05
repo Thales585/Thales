@@ -1,0 +1,34 @@
+{
+ "expectations": [
+  {
+   "text": "All three seats labeled",
+   "passed": true,
+   "evidence": "Seat map table with Engine (MWA/XYL/BMI), Tollbooth (CNM/AWK/WTRG), Regime-inverse rows"
+  },
+  {
+   "text": "Inverse handled via proxy ladder, not forced",
+   "passed": true,
+   "evidence": "PRMB offered as genuine feeder with diffuseness wart; rung-2 short(TTEK) with 3 costs; rung-3 declared standing expectation"
+  },
+  {
+   "text": "Alpaca tradability verified",
+   "passed": true,
+   "evidence": "All 8 tickers verified via paper assets API 2026-07-05; TTEK confirmed shortable"
+  },
+  {
+   "text": "No prices from memory",
+   "passed": true,
+   "evidence": "Zero $x.xx figures in output (mechanical scan)"
+  },
+  {
+   "text": "Gauntlet hand-off, no survivor claims",
+   "passed": true,
+   "evidence": "Explicit hand-off; 'slate is unjudged'"
+  },
+  {
+   "text": "Uninsured quadrant named",
+   "passed": true,
+   "evidence": "Federal rescission + municipal squeeze + consumer downtrade hurts all seats incl. short leg"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "skill_name": "hypothesis-to-trio",
+ "evals": [
+  {
+   "id": 0,
+   "prompt": "Hypothesis: municipal water infrastructure in the US is critically underinvested and will be repriced upward over the next 24 months as federal funding lands. Turn this into something I can structure as positions in my Thales paper ledger.",
+   "expected_output": "Three-seat map with Alpaca-verified candidates; the regime-inverse seat is historically unfillable for water (playbook finding) so the output should walk the proxy ladder honestly - ETF proxy, short(N) notation, or declare unfillable - rather than force a weak occupant. No prices from memory. Hands off to gauntlet without declaring survivors.",
+   "files": [],
+   "assertions": [
+    "Output labels all three seats explicitly: Engine, Tollbooth, Regime-inverse",
+    "The water regime-inverse seat is handled via the proxy ladder (ETF/carrier proxy, short(N) notation, or explicit unfillable declaration) rather than a forced occupant with no caveat",
+    "Tickers are claimed verified tradable on Alpaca (verification step evidenced in output)",
+    "No prices, returns, drawdowns, or market caps quoted from memory (qualitative facts OK)",
+    "Ends with gauntlet hand-off and does NOT declare the trio valid/surviving/passing",
+    "Names an uninsured quadrant (one scenario hurting all three seats)"
+   ]
+  },
+  {
+   "id": 1,
+   "prompt": "My thesis: the AI datacenter capex cycle cracks within 18 months - orders get cancelled, GPU lead times collapse. How would I trade this idea? paper account, thales method.",
+   "expected_output": "A bust-thesis seat map: the ENGINE must be what IS the bust thesis (likely requiring short(N) notation since nothing listed feeds on the bust - the AI-DC finding), with honest structural costs of synthetic seats stated (hedge-not-feeder, never short-the-engine rule, carry costs). Tollbooth and inverse mapped at scenario level. No survivor claims.",
+   "files": [],
+   "assertions": [
+    "Output labels all three seats explicitly: Engine, Tollbooth, Regime-inverse",
+    "For the bust thesis, at least one seat uses short(N) notation OR is explicitly declared unfillable (nothing listed feeds on an AI-capex bust)",
+    "States at least two structural costs of a synthetic short seat (hedge-not-feeder/non-cannibalization broken; never-short-the-engine rule; carry/borrow decay)",
+    "No prices, returns, drawdowns, or market caps quoted from memory",
+    "Ends with gauntlet hand-off and does NOT declare the trio valid/surviving/passing"
+   ]
+  }
+ ]
+}

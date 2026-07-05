@@ -1,0 +1,12 @@
+{
+ "eval_id": 1,
+ "eval_name": "ai-bust-synthetic-engine",
+ "prompt": "My thesis: the AI datacenter capex cycle cracks within 18 months - orders get cancelled, GPU lead times collapse. How would I trade this idea? paper account, thales method.",
+ "assertions": [
+  "Output labels all three seats explicitly: Engine, Tollbooth, Regime-inverse",
+  "For the bust thesis, at least one seat uses short(N) notation OR is explicitly declared unfillable (nothing listed feeds on an AI-capex bust)",
+  "States at least two structural costs of a synthetic short seat (hedge-not-feeder/non-cannibalization broken; never-short-the-engine rule; carry/borrow decay)",
+  "No prices, returns, drawdowns, or market caps quoted from memory",
+  "Ends with gauntlet hand-off and does NOT declare the trio valid/surviving/passing"
+ ]
+}

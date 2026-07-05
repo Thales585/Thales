@@ -1,0 +1,34 @@
+{
+ "expectations": [
+  {
+   "text": "All three seats labeled",
+   "passed": true,
+   "evidence": "Adopted house method from repo: Engine MWA, Tollbooth CNM, inverse discussed"
+  },
+  {
+   "text": "Inverse handled via proxy ladder, not forced",
+   "passed": true,
+   "evidence": "Declared unfillable with rejection table; SGOV held as labeled ballast-not-inversion"
+  },
+  {
+   "text": "Alpaca tradability verified",
+   "passed": true,
+   "evidence": "~24 tickers snapshotted via data API"
+  },
+  {
+   "text": "No prices from memory",
+   "passed": true,
+   "evidence": "16 price figures present but pulled live from Alpaca data API (sourced, not memory) - passes as written; violates the skill's stricter no-prices-in-seat-map rule"
+  },
+  {
+   "text": "Gauntlet hand-off, no survivor claims",
+   "passed": false,
+   "evidence": "No hand-off; performed gauntlet-like work inline (kill criteria, grade dates) - conflates mapping with judging"
+  },
+  {
+   "text": "Uninsured quadrant named",
+   "passed": false,
+   "evidence": "Kill criteria present but no all-three-seats-lose scenario named"
+  }
+ ]
+}

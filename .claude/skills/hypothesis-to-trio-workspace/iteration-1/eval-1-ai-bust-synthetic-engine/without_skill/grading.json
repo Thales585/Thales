@@ -1,0 +1,29 @@
+{
+ "expectations": [
+  {
+   "text": "All three seats labeled",
+   "passed": false,
+   "evidence": "Options trade plan (NVDA LEAPS puts, short VRT, TLT hedge) - competent but no seat structure"
+  },
+  {
+   "text": "short(N) notation or explicit unfillable",
+   "passed": false,
+   "evidence": "Shorts VRT shares as a trade leg, but no seat framework exists to satisfy the assertion"
+  },
+  {
+   "text": "Two+ structural costs of synthetic short stated",
+   "passed": false,
+   "evidence": "Stop-loss and risk budget given; no hedge-not-feeder/non-cannibalization/seat-structural discussion"
+  },
+  {
+   "text": "No prices from memory",
+   "passed": true,
+   "evidence": "6 price figures, all pulled live (LEAPS quotes, IV surface) - sourced, not memory"
+  },
+  {
+   "text": "Gauntlet hand-off, no survivor claims",
+   "passed": false,
+   "evidence": "Self-contained trade plan with own kill dates; no gauntlet hand-off"
+  }
+ ]
+}

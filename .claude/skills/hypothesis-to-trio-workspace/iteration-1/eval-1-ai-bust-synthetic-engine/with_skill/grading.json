@@ -1,0 +1,29 @@
+{
+ "expectations": [
+  {
+   "text": "All three seats labeled",
+   "passed": true,
+   "evidence": "Engine short(SMCI)/short(VRT)/SOXS, Tollbooth HLI/PJT/LAZ, Regime-inverse NVDA/AVGO/ETN"
+  },
+  {
+   "text": "short(N) notation or explicit unfillable",
+   "passed": true,
+   "evidence": "Engine at rung 2: short(SMCI), short(VRT); mirror-structure insight (unfillable seat moved to engine)"
+  },
+  {
+   "text": "Two+ structural costs of synthetic short stated",
+   "passed": true,
+   "evidence": "All three: hedge-not-feeder/non-cannibalization dies; mirror-redundancy guard (short(NVDA) excluded); carry/borrow decay, paper-only"
+  },
+  {
+   "text": "No prices from memory",
+   "passed": true,
+   "evidence": "Zero price figures (mechanical scan)"
+  },
+  {
+   "text": "Gauntlet hand-off, no survivor claims",
+   "passed": true,
+   "evidence": "Hand-off with 3 pre-registration items; 'expect candidates to die there'"
+  }
+ ]
+}
