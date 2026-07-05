@@ -33,7 +33,7 @@ never mid-run).
 | [Defense trio](entries/2026-07-04-defense-trio.md) | unranked (checkpoint 2026-08-15) | $5,000 | orders queued |
 | [AAPL road test](entries/2026-07-04-aapl-road-test.md) | — (plumbing) | ~$210 | order queued |
 
-Deployed: ~$40,210 of $100,000 (~40%). Cicada sleeve: empty (cap <5%).
+Deployed: ~$40,210 in trios + $45,000 control arm = ~$85,210 of $100,000 (~85%). Cicada sleeve: empty (cap <5%).
 
 ## Findings (sectors gauntleted, no position taken)
 

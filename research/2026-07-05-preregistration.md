@@ -1,15 +1,16 @@
-# Pre-Registration — DRAFT v2 for review (not yet in force)
+# Pre-Registration — SIGNED / BINDING
 
-**Written 2026-07-05, before any post-entry data exists. Effective at the 2026-07-06 open
-*only* once signed off. Paper trading only; a calibration study, not financial advice.**
+**Written 2026-07-05, before any post-entry data exists. Paper trading only; a calibration
+study, not financial advice.**
 
-> **Status: SIGNED / BINDING as of 2026-07-05.** v1 was audited by an independent model
-> (Fable) and graded *not-yet-sound*; v2 adopted every fix; v3 settled the three operator
-> decisions — **Electrons → ICLN**, **Defense → ITA report-only**, **breadth → hard gate
-> at 6 of 7**. This committed version is the binding pre-registration. **The control arm is
-> NOT yet enacted** (operator deferred enactment); the study clock does not start, and
-> nothing is graded, until the control arm is bought — see §8 for how T0 is set given the
-> trios already fill 2026-07-06.
+> **Status: SIGNED / BINDING as of 2026-07-05. Control arm ENACTED 2026-07-05; study
+> T0 = 2026-07-06.** v1 was audited by an independent model (Fable) and graded
+> *not-yet-sound*; v2 adopted every fix; v3 settled the three operator decisions —
+> **Electrons → ICLN**, **Defense → ITA report-only**, **breadth → hard gate at 6 of 7**.
+> The 9-ETF control arm ($45k) was enacted 2026-07-05 to fill the same 2026-07-06 open as
+> the trios, so **T0 = 2026-07-06** (the clean common start of §8). Positions and order IDs
+> in [ledger/entries/2026-07-05-control-arm.md](../ledger/entries/2026-07-05-control-arm.md).
+> The study clock now runs; the single verdict is due ~2027-07-06.
 
 ---
 
